@@ -1,0 +1,237 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimal-ui">
+  <title>CV - {{basics.name}}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/fontawesome.min.css"
+    integrity="sha512-xX2rYBFJSj86W54Fyv1de80DWBq7zYLn2z0I9bIhQG+rxIF6XVJUpdGnsNHWRa6AvP89vtFupEPDP8eZAtu9qA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/brands.min.css"
+    integrity="sha512-OivR4OdSsE1onDm/i3J3Hpsm5GmOVvr9r49K3jJ0dnsxVzZgaOJ5MfxEAxCyGrzWozL9uJGKz6un3A7L+redIQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/solid.min.css"
+    integrity="sha512-qzgHTQ60z8RJitD5a28/c47in6WlHGuyRvMusdnuWWBB6fZ0DWG/KyfchGSBlLVeqAz+1LzNq+gGZkCSHnSd3g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>{{{_.styles}}}</style>
+</head>
+
+<body resume>
+  <aside>
+    {{#with basics}}
+    <div class="photo">
+      <div class="hex hex-border hex-absolute"></div>
+      <div class="hex hex-solid">
+        {{#if image}}
+          <img src="{{image}}" alt="photo">
+        {{else}}
+          <img src="https://picsum.photos/200" alt="photo">
+        {{/if}}
+      </div>
+    </div>
+
+    <div class="name">
+      {{names name}}
+    </div>
+
+    <div class="title">
+      {{label}}
+    </div>
+
+    <section class="contacts">
+      <div class="heading">
+        <div class="hex-icon">
+          <div class="hex hex-border"></div>
+          <i class="fa-solid fa-id-badge"></i>
+        </div>
+        <h3>CONTACT ME</h3>
+        <hr />
+      </div>
+
+      <ul>
+        <li>
+          <div class="hex-icon">
+            <div class="hex hex-solid"></div>
+            <i class="fa-solid fa-phone"></i>
+          </div>
+          <div>
+            {{phone}}
+          </div>
+        </li>
+        <li>
+          <div class="hex-icon">
+            <div class="hex hex-solid"></div>
+            <i class="fa-solid fa-envelope"></i>
+          </div>
+          <div>
+            <a href="mailto:{{email}}">{{email}}</a>
+          </div>
+        </li>
+        <li>
+          <div class="hex-icon">
+            <div class="hex hex-solid"></div>
+            <i class="fa-solid fa-globe"></i>
+          </div>
+          <div>
+            <a target="_blank" href="{{url}}">
+              {{tiny url}}
+              <sup>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </sup>
+            </a>
+          </div>
+        </li>
+        <li>
+          <div class="hex-icon">
+            <div class="hex hex-solid"></div>
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div>
+            {{location.city}}, {{location.countryCode}}
+          </div>
+        </li>
+      </ul>
+    </section>
+    {{/with}}
+
+    <section class="skills">
+      <div class="heading">
+        <div class="hex-icon">
+          <div class="hex hex-border"></div>
+          <i class="fa-solid fa-code"></i>
+        </div>
+        <h3>SKILLS</h3>
+        <hr />
+      </div>
+
+      {{#skills skills as | sk |}}
+        <div class="skill">
+          <h6>{{name}}</h6>
+          <div>
+          {{#levels level as | lvl |}}
+            <span class="skill-level {{#if this}}skill-level-active{{/if}}"></span>
+          {{/levels}}
+          </div>
+        </div>
+      {{/skills}}
+    </section>
+
+    <section class="social">
+      <div class="heading">
+        <div class="hex-icon">
+          <div class="hex hex-border"></div>
+          <i class="fa-solid fa-share-nodes"></i>
+        </div>
+        <h3>CONNECT</h3>
+        <hr />
+      </div>
+
+      <ul>
+        {{#each basics.profiles}}
+        <li>
+          <div class="hex-icon">
+            <div class="hex hex-solid"></div>
+            <i class="fa-brands fa-{{lowercase network}}"></i>
+          </div>
+          <a rel="noreferrer" target="_blank" href="{{url}}" title="{{network}}">
+            {{tiny url 2}}
+            <sup>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </sup>
+          </a>
+        </li>
+        {{/each}}
+      </ul>
+      </div>
+    </section>
+  </aside>
+
+  <main>
+    <section class="profile">
+      <div class="heading">
+        <div class="hex-icon">
+          <div class="hex hex-border"></div>
+          <i class="fa-solid fa-id-badge"></i>
+        </div>
+        <h3>PROFILE</h3>
+        <hr />
+      </div>
+
+      {{#with basics}}
+      <summary>{{{summary}}}</summary>
+      {{/with}}
+    </section>
+
+    <section class="work">
+      <div class="heading">
+        <div class="hex-icon">
+          <div class="hex hex-border"></div>
+          <i class="fa-solid fa-briefcase"></i>
+        </div>
+        <h3>WORK EXPERIENCE</h3>
+        <hr />
+      </div>
+
+      {{#each work}}
+      <div class="company">
+
+        <div class="heading">
+          <h4>
+            {{name}}
+            <a href="{{url}}" target="_blank">{{tiny url}}</a>
+          </h4>
+
+          <div class="dates">
+            <i class="fa-solid fa-calendar-days"></i>
+            {{date startDate}} - {{#if endDate}}{{date endDate}}{{else}}{{date }}{{/if}}
+          </div>
+        </div>
+
+        <div class="position">{{position}}</div>
+        <div class="summary">{{md summary}}</div>
+
+        <div class="highlights">
+          {{#each highlights as | stack |}}
+          <div class="stack">{{stack}}</div>
+          {{/each}}
+        </div>
+      </div>
+      {{/each}}
+    </section>
+
+    <section class="education">
+      <div class="heading">
+        <div class="hex-icon">
+          <div class="hex hex-border"></div>
+          <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+        <h3>EDUCATION</h3>
+        <hr />
+      </div>
+
+      {{#each education as | e |}}
+      <div class="institution">
+        <div class="heading">
+          <h4>
+            {{institution}}
+            <a href="{{url}}" target="_blank">{{tiny url}}</a>
+          </h4>
+
+          <div class="dates">
+            <i class="fa-solid fa-calendar-days"></i>
+            {{date startDate}}{{#if endDate}} - {{date endDate}}{{/if}}
+          </div>
+        </div>
+        {{!-- <div class="studyType">{{studyType}}</div> --}}
+        <div class="area">{{area}}</div>
+      </div>
+      {{/each}}
+    </section>
+  </main>
+</body>
+
+</html>

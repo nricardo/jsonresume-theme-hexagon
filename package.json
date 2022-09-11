@@ -1,0 +1,24 @@
+{
+  "name": "jsonresume-theme-hexagon",
+  "version": "0.1.0",
+  "description": "Hexagon theme for JSON Resume",
+  "author": "Nelson Ricardo",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nricardo/jsonresume-theme-hexagon"
+  },
+  "license": "MIT",
+  "scripts": {
+    "pdf": "resume export --format pdf --theme .",
+    "html": "resume export --format html --theme .",
+    "serve": "resume serve --theme ."
+  },
+  "dependencies": {
+    "handlebars": "^4.7.7",
+    "marked": "^4.1.0",
+    "moment": "^2.29.4"
+  },
+  "devDependencies": {
+    "resume-cli": "^3.0.7"
+  }
+}
