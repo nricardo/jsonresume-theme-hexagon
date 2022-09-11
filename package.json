@@ -5,9 +5,10 @@
   "author": "Nelson Ricardo",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nricardo/jsonresume-theme-hexagon"
+    "url": "https://github.com/nricardo/jsonresume-theme-hexagon.git"
   },
   "license": "MIT",
+  "private": false,
   "scripts": {
     "pdf": "resume export --format pdf --theme .",
     "html": "resume export --format html --theme .",
